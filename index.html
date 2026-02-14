@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Page</title>
+    <link rel="stylesheet" href="./css/styles.css">
+
+</head>
+
+<body id="body">
+    <div id="app">
+
+        <!-- Header -->
+        <div id="header">
+            <div id="navigation_header">
+                <img src="../Brand-Logo.png" id="Brand-Logo" alt="Brand Logo">
+                <img src="../Cart-Icon.png" id="Cart-Icon" alt="Cart Icon">
+            </div>
+        </div>
+
+        <!-- Item Area -->
+        <div id="item-area">
+            <div id="information">
+                <h1 id="title">Ornare Vulputate Elit</h1>
+                <p id="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.
+                </p>
+            </div>
+
+            <div id="main-content">
+                <div id="item">
+                    <img src="../Dog-Food.png" id="Dog-Food" alt="Dog Food">
+                    <div id="product-info">
+                        <h2 id="item-title">Natures Menu Dog Food Can Chicken</h2>
+                        <p id="item-cost">£22.81</p>
+                        <button class="button" id="add-to-bag">
+                            <span id="add-to-bag-text">ADD TO BAG</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div id="overlay">
+            <div id="cart-loader"></div>
+        </div>
+
+        <!-- Slide-out Cart Panel -->
+        <div id="cart-slideout">
+            <div id="cart-header">
+                <h2 id="bag">Your Bag</h2>
+                <p id="close-cart">X</p>
+            </div>
+
+            <div id="cart-content">
+                <div class="cart-item">
+
+                    <div class="item-image">
+                        <img src="../Dog-Food.png" alt="Dog Food">
+                    </div>
+                    <div class="item-info">
+                        <span class="item-name">Natures Menu Dog Food Can Chicken</span>
+                        <span class="item-price">£22.81</span>
+                        <span class="item-remove">REMOVE X</span>
+                    </div>
+                </div>
+            </div>
+            <div id="cart-footer">
+                    <p id="subtotal">Subtotal: £22.81</p>
+                    <button class="button" id="checkout-button">PROCEED TO CHECKOUT</button>
+                    <p id="continue-shopping">CONTINUE SHOPPING</p>
+                </div>
+        </div>
+
+        <script>
+            const addToBag = document.getElementById('add-to-bag');
+            const cartSlideout = document.getElementById('cart-slideout');
+            const closeCart = document.getElementById('close-cart');
+            const overlay = document.getElementById('overlay');
+
+
+            addToBag.addEventListener('click', () => {
+                // Show overlay and loader
+                overlay.classList.add('active');
+                const loader = document.getElementById('cart-loader');
+                loader.style.display = 'block';
+
+                // Wait 1 second, then open cart
+                setTimeout(() => {
+                    cartSlideout.classList.add('open');
+                    loader.style.display = 'none'; // hide loader
+                }, 1000); // 1000ms = 1 second
+            });
+
+            closeCart.addEventListener('click', () => {
+                cartSlideout.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+
+            overlay.addEventListener('click', () => {
+                cartSlideout.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+
+        </script>
+</body>
+
+</html>
